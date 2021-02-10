@@ -2,8 +2,10 @@ import React from "react"
 import Navbar from "../components/NavBar.js";
 import '../css/Detail_manga.css';
 import SimpleRating from '../components/SimpleRating';
-import NavBar2 from '../components/NavBar'
-//import {Link} from 'react-router-dom';
+import NavBar2 from '../components/NavBar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import {Link} from 'react-router-dom';
 
 
 
@@ -63,6 +65,10 @@ async componentDidMount(){
         
         <div className="all_page" >
             <NavBar2/>
+
+            <Link to="/">
+              <FontAwesomeIcon style={{color:"white",width:"10%",height:"30px",marginTop:"30px"}}icon={faArrowLeft} />
+            </Link>
           
         {this.state.manga ? (
 
