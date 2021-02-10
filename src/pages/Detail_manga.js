@@ -83,6 +83,8 @@ async componentDidMount(){
                             
                            <h1> {manga.tittles_en} </h1> 
                            <SimpleRating/>
+                            <p style={{color:"#E8ECF2",marginLeft:"10px",fontSize:"15px",fontWeight:"bold"}}>Popularity Rank : {manga.popularityRank}</p>
+                            <p style={{color:"#E8ECF2",marginLeft:"10px",fontSize:"15px",fontWeight:"bold"}}>Episode Length : {manga.episodeLength}</p>
                            </div>
 
                            
