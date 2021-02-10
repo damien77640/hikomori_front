@@ -2,8 +2,7 @@ import React from "react"
 import Navbar from "../components/NavBar.js";
 import './Detail_manga.css';
 import SimpleRating from '../components/SimpleRating';
-import NavBar from '../components/NavBar'
-
+import NavBar2 from '../components/NavBar'
 //import {Link} from 'react-router-dom';
 
 
@@ -63,7 +62,7 @@ async componentDidMount(){
     return (
         
         <div className="all_page" >
-            <NavBar/>
+            <NavBar2/>
           
         {this.state.manga ? (
 
