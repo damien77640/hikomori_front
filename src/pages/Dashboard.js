@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import DashboardTest from "./DashboardTest";
 
 const Dashboard = () => {
     const [data, setData] = useState([])
@@ -13,7 +14,8 @@ const Dashboard = () => {
     console.log("ceci est un test", data);
     return (
         <>
-            <p>OK boomer</p>
+            {/* <DashboardTest/> */}
+            <p>OK Boomer</p>
         </>
     )
 }
