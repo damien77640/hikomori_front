@@ -22,16 +22,16 @@ const Dashboard = () => {
         },
     [])
 
+    // Parcours et créer l'affichage de chaque manga
     const Manga = () => {
-        {/* Parcours l'affichage de chaque manga */}
         let lstManga = []
         let contenu
         data.map((manga) => {
+            // permet de vérifier si le synopsis possède plus de 250 caractére
             if (manga.synopsis.length > 250){
                 contenu = manga.synopsis.substr(0, 250) + '...'
             }
-            console.log(contenu.length)
-                            
+            // Affichage des images et du synopsis
             lstManga.push( 
                 <div className='w3-half w3-col s6'>
                     <Link to={"/manga/" + manga.id} className='dash_manga w3-container'>
@@ -40,7 +40,8 @@ const Dashboard = () => {
                             {contenu}
                         </div>
                     </Link>
-                </div>)
+                </div>
+                )
         })
         return lstManga
     }
