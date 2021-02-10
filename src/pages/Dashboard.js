@@ -36,7 +36,7 @@ const Dashboard = () => {
                 <div className='w3-half w3-col s6'>
                     <Link to={"/manga/" + manga.id} className='dash_manga w3-container'>
                         <img className="img_manga w3-round-xlarge" src={manga.posterImageSmall} alt='image'></img>
-                        <div className="synopsis w3-hide-small">
+                        <div className="synopsis w3-hide-small w3-hide-medium">
                             {contenu}
                         </div>
                     </Link>
