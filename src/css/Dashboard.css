@@ -7,3 +7,11 @@
     width: 100%;
     height: 100%;
 }
+
+.synopsis{
+    background-color: #E8ECF2;
+    border-radius: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 10px;
+}

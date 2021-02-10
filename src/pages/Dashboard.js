@@ -19,8 +19,31 @@ const Dashboard = () => {
             .then(response => {
                 setData(response.data)
             })
-        }, [])
-        console.log("choco " + data)
+        },
+    [])
+
+    const Manga = () => {
+        {/* Parcours l'affichage de chaque manga */}
+        let lstManga = []
+        let contenu
+        data.map((manga) => {
+            if (manga.synopsis.length > 250){
+                contenu = manga.synopsis.substr(0, 250) + '...'
+            }
+            console.log(contenu.length)
+                            
+            lstManga.push( 
+                <div className='w3-half w3-col s6'>
+                    <Link to={"/manga/" + manga.id} className='dash_manga w3-container'>
+                        <img className="img_manga w3-round-xlarge" src={manga.posterImageSmall} alt='image'></img>
+                        <div className="synopsis w3-hide-small">
+                            {contenu}
+                        </div>
+                    </Link>
+                </div>)
+        })
+        return lstManga
+    }
 
     return (
 
@@ -28,14 +51,7 @@ const Dashboard = () => {
             <header>
                 <NavBar/>
             </header>
-            
-            { data.map((manga) => (
-                <div class='w3-half w3-col s6'>
-                    <Link to={"/manga/"+manga.id} class='dash_manga w3-container'>
-                        <img className="img_manga w3-round-xlarge" src={manga.posterImageSmall} alt='image'></img>
-                    </Link>
-                </div>
-            ))}
+            {Manga()}
         </div>
     )
 }
