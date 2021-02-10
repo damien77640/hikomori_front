@@ -5,7 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  background: linear-gradient(90deg, #3e93e2, #2935be);
+  padding: 0 4% 0 4%
+
 }
+
+@media (min-width: 500px) {
+  body {
+    margin: 0 0 0 8%;
+  }
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

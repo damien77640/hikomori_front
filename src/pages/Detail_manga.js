@@ -1,6 +1,6 @@
 import React from "react"
 import Navbar from "../components/NavBar.js";
-import './Detail_manga.css';
+import '../css/Detail_manga.css';
 import SimpleRating from '../components/SimpleRating';
 import NavBar2 from '../components/NavBar'
 //import {Link} from 'react-router-dom';
@@ -68,14 +68,11 @@ async componentDidMount(){
 
           <div >
 
-               
-
             {this.state.manga.map(manga => (
            
                 <div>
                 <div className="manga_info" style={{color:"black"}}>
-               
-                           
+
                 
                            <img className="img_manga" style={{float:"left",borderRadius:"13px"}} src={manga.posterImageSmall} alt="Logo" />
                            <div className="info_droite">
@@ -86,9 +83,6 @@ async componentDidMount(){
                             <p style={{color:"#E8ECF2",marginLeft:"10px",fontSize:"15px",fontWeight:"bold"}}>Episode Length : {manga.episodeLength}</p>
                            </div>
 
-                           
-                
-                    
                 </div>
 
                 <div>
@@ -101,13 +95,6 @@ async componentDidMount(){
 
                 </div>
                                     
-
-                    
-                    
-         
-              
-
-             
             ))}
           </div>
         ) : (

@@ -1,22 +1,42 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import DashboardTest from "./DashboardTest";
+import '../css/Dashboard.css'
+import NavBar from '../components/NavBar.js'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+
+const path = "http://localhost:5000/manga"
 
 const Dashboard = () => {
     const [data, setData] = useState([])
     useEffect(() => {
         axios
-            .get("http://localhost:5000")
+            .get(path)
             .then(response => {
                 setData(response.data)
             })
-    }, [])
-    console.log("ceci est un test", data);
+        }, [])
+        console.log("choco " + data)
+
     return (
-        <>
-            {/* <DashboardTest/> */}
-            <p>OK Boomer</p>
-        </>
+
+        <div>
+            <header>
+                <NavBar/>
+            </header>
+            
+            { data.map((manga) => (
+                <div class='w3-half w3-col s6'>
+                    <Link to={"/manga/"+manga.id} class='dash_manga w3-container'>
+                        <img className="img_manga w3-round-xlarge" src={manga.posterImageSmall} alt='image'></img>
+                    </Link>
+                </div>
+            ))}
+        </div>
     )
 }
 
