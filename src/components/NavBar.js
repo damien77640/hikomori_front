@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme , fade } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -27,6 +27,8 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import HikomoriWhiteLogo from "../image/HikomoriWhiteLogo.png"
 import HikomoriBlackLogo from "../image/HikomoriBlackLogo.png"
 import PhotoProfil from "../image/PhotoProfil.jpeg"
+import {Link} from "react-router-dom";
+import axios from "axios";
 
 // MATERIAL-UI --> https://material-ui.com/components/drawers/
 
@@ -113,10 +115,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [mangas, setMangas] = useState([])
+  const [searchTerm, setSearchTerm] = useState("")
+  const [searchResults, setSearchResults] = useState([])
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -126,6 +132,30 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  useEffect(() => {
+    axios
+        .get("http://localhost:5000/manga")
+        .then(response => {
+            setMangas(response.data)
+        })
+  }, [])
+  
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value)
+    if (e.target.value === '') {
+      document.getElementById("manga").style.display = "initial";
+    } else {
+      document.getElementById("manga").style.display = "none";
+    }
+  };
+  useEffect(() => {
+    const results = mangas.filter(manga =>
+        manga.tittles_jap.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
+
+  
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -154,6 +184,8 @@ export default function PersistentDrawerLeft() {
             </div>
             <InputBase
               placeholder="Search…"
+              value={searchTerm} 
+              onChange={handleChange}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
@@ -221,7 +253,18 @@ export default function PersistentDrawerLeft() {
         })}
       >
         <div className={classes.drawerHeader} />
-       
+        {searchTerm !== '' ? 
+            <div>
+            { searchResults.map((manga, i) => (
+                <Link to={"/manga/"+manga.id} >
+             <img style={{position:"relative", width: "100px"}} src={manga.posterImageSmall} alt='image'></img>
+             </Link>
+             )
+            )}
+            </div>
+            : 
+            ''
+             }
       </main>
     </div>
   );
