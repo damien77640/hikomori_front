@@ -1,10 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme , fade } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -22,7 +24,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import MapIcon from '@material-ui/icons/Map';
 import Avatar from '@material-ui/core/Avatar';
 import SettingsIcon from '@material-ui/icons/Settings';
-import HikomoriLogoWhite from "../image/HikomoriLogoWhite.png"
+import HikomoriWhiteLogo from "../image/HikomoriWhiteLogo.png"
+import HikomoriBlackLogo from "../image/HikomoriBlackLogo.png"
 import PhotoProfil from "../image/PhotoProfil.jpeg"
 
 // MATERIAL-UI --> https://material-ui.com/components/drawers/
@@ -49,6 +52,30 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+  },
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   hide: {
     display: 'none',
@@ -107,8 +134,10 @@ export default function PersistentDrawerLeft() {
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
-      >
+      > 
+          
         <Toolbar>
+          
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -116,10 +145,26 @@ export default function PersistentDrawerLeft() {
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
           >
+            
             <MenuIcon />
           </IconButton>
-           <img src={HikomoriLogoWhite} width="200" height="50" alt=""></img>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </div>
+          <div className={classes.grow} />
+          <div className={classes.sectionDesktop}></div>
         </Toolbar>
+
       </AppBar>
       <Drawer
         className={classes.drawer}
@@ -130,38 +175,40 @@ export default function PersistentDrawerLeft() {
           paper: classes.drawerPaper,
         }}
       >
+        
         <div className={classes.drawerHeader}>
+          <img src={HikomoriBlackLogo} width="120" height="30"></img>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
         <Divider />
-        <ListItem button>
+        <ListItem button component="a" href="/home">
         <ListItemIcon>
           <HomeIcon />
         </ListItemIcon>
         <ListItemText primary="Home" />
       </ListItem>
-      <ListItem button>
+      <ListItem button component="a" href="/favorites">
         <ListItemIcon>
-          <FavoriteIcon />
+          <FavoriteIcon/>
         </ListItemIcon>
         <ListItemText primary="Favorites" />
       </ListItem>
-      <ListItem button>
-        <ListItemIcon>
+      <ListItem button component="a" href="/maps">
+        <ListItemIcon >
           <MapIcon />
         </ListItemIcon>
         <ListItemText primary="Maps" />
       </ListItem>
         <Divider />
-        <ListItem button>
+        <ListItem button component="a" href="/settings">
         <ListItemIcon>
           <SettingsIcon />
         </ListItemIcon>
         <ListItemText primary="Settings" />
       </ListItem>
-      <ListItem button>
+      <ListItem button component="a" href="/profile">
         <ListItemIcon>
         <Avatar src= {PhotoProfil}/>
         </ListItemIcon>
