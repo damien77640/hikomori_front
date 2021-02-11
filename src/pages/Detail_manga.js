@@ -28,6 +28,14 @@ class Detail_manga extends React.Component{
 
 
 
+// if (e.target.value === '') {
+//   document.getElementById("manga").style.display = "initial"
+//   document.getElementById("mangaDescription").style.display = "initial"
+// } else if ( document.getElementById("manga")) {
+//   document.getElementById("manga").style.display = "none";
+// } else {
+//   document.getElementById("mangaDescription").style.display = "none";
+// }
 
 
 
@@ -35,6 +43,7 @@ async componentDidMount(){
 
   // je vais chercher l'ensemble des info du pokemon correspondant à l'id 
   const response = await fetch(`http://localhost:5000/manga/${this.state.id}`)
+  console.log("re")
 
  
 
@@ -64,13 +73,13 @@ async componentDidMount(){
         <div className="all_page" >
             <NavBar2/>
 
-            <Link to="/">
-              <FontAwesomeIcon style={{color:"white",width:"10%",height:"30px",marginTop:"30px"}}icon={faArrowLeft} />
-            </Link>
           
         {this.state.manga ? (
 
-          <div >
+          <div className="manga">
+            <Link to="/">
+              <FontAwesomeIcon style={{color:"white",width:"10%",height:"30px",marginTop:"30px"}}icon={faArrowLeft} />
+            </Link>
 
             {this.state.manga.map(manga => (
            

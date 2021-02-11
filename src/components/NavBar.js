@@ -143,10 +143,16 @@ export default function PersistentDrawerLeft() {
   
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
+    // if (e.target.value === '') {
+    //   document.getElementsById("manga").style.display = "initial";
+    // } else {
+    //   document.getElementById("manga").style.display = "none";
+    // }
+
     if (e.target.value === '') {
-      document.getElementById("manga").style.display = "initial";
+      document.getElementsByClassName("manga")[0].style.display = "initial"
     } else {
-      document.getElementById("manga").style.display = "none";
+      document.getElementsByClassName("manga")[0].style.display = "none"
     }
   };
   useEffect(() => {

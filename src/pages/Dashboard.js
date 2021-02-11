@@ -51,7 +51,7 @@ const Dashboard = () => {
             <header>
                 <NavBar/>
             </header>
-            <div id="manga">
+            <div className="manga">
             {Manga()}
             </div>
         </div>
