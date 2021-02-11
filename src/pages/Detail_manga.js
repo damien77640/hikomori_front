@@ -43,7 +43,6 @@ async componentDidMount(){
 
   // je vais chercher l'ensemble des info du pokemon correspondant à l'id 
   const response = await fetch(`http://localhost:5000/manga/${this.state.id}`)
-  console.log("re")
 
  
 
