@@ -14,7 +14,7 @@ const App = () => {
         <Switch>
           //NOTE -  Vous pouvez changer les page de sortie, mais j'ai hardcode les routes dans NavBar
             <Route exact path="/" render = {props => (<Dashboard {...props}/>)} />
-            <Route exact path="/home" render = {props => (<DashboardTest {...props}/>)} />
+            <Route exact path="/home" render = {props => (<Dashboard {...props}/>)} />
             <Route exact path="/favorites" render = {props => (<DashboardTest {...props}/>)} />
             <Route exact path="/maps" render = {props => (<DashboardTest {...props}/>)} />
             <Route exact path="/settings" render = {props => (<DashboardTest {...props}/>)} />
