@@ -24,6 +24,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import MapIcon from '@material-ui/icons/Map';
 import Avatar from '@material-ui/core/Avatar';
 import SettingsIcon from '@material-ui/icons/Settings';
+import { positions } from '@material-ui/system';
+import FilterListIcon from '@material-ui/icons/FilterList';
 import HikomoriWhiteLogo from "../image/HikomoriWhiteLogo.png"
 import HikomoriBlackLogo from "../image/HikomoriBlackLogo.png"
 import PhotoProfil from "../image/PhotoProfil.jpeg"
@@ -79,6 +81,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  Avatar:{
+    marginRight: '20%'
   },
   hide: {
     display: 'none',
@@ -172,9 +177,7 @@ export default function PersistentDrawerLeft() {
           [classes.appBarShift]: open,
         })}
       > 
-          
         <Toolbar>
-          
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -182,6 +185,7 @@ export default function PersistentDrawerLeft() {
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
           >
+            
             
             <MenuIcon />
           </IconButton>
@@ -202,9 +206,11 @@ export default function PersistentDrawerLeft() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}></div>
+          <FilterListIcon />
+          <Avatar right = "20%"/>
         </Toolbar>
+       </AppBar>
 
-      </AppBar>
       <Drawer
         className={classes.drawer}
         variant="persistent"
