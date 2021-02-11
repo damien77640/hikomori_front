@@ -42,8 +42,6 @@ async componentDidMount(){
   
 
   const data = await response.json()
-
-  console.log(data)
   
 
 
@@ -77,19 +75,19 @@ async componentDidMount(){
             {this.state.manga.map(manga => (
            
                 <div>
-                <div className="manga_info" style={{color:"black"}}>
+                  <div className="manga_info" style={{color:"black"}}>
 
-                
-                           <img className="img_manga" style={{float:"left",borderRadius:"13px"}} src={manga.posterImageSmall} alt="Logo" />
-                           <div className="info_droite">
-                            
-                           <h1> {manga.tittles_en} </h1> 
-                           <SimpleRating/>
-                            <p style={{color:"#E8ECF2",marginLeft:"10px",fontSize:"15px",fontWeight:"bold"}}>Popularity Rank : {manga.popularityRank}</p>
-                            <p style={{color:"#E8ECF2",marginLeft:"10px",fontSize:"15px",fontWeight:"bold"}}>Episode Length : {manga.episodeLength}</p>
-                           </div>
+                  
+                    <img className="img_manga" style={{float:"left",borderRadius:"13px"}} src={manga.posterImageSmall} alt="Logo" />
+                    <div className="info_droite">
+                      
+                      <h1> {manga.tittles_en} </h1> 
+                      <SimpleRating/>
+                        <p style={{color:"#E8ECF2",marginLeft:"10px",fontSize:"15px",fontWeight:"bold"}}>Popularity Rank : {manga.popularityRank}</p>
+                        <p style={{color:"#E8ECF2",marginLeft:"10px",fontSize:"15px",fontWeight:"bold"}}>Episode Length : {manga.episodeLength}</p>
+                    </div>
 
-                </div>
+                  </div>
 
                 <div>
                 <h2>SYNOPSIS</h2>
@@ -104,7 +102,7 @@ async componentDidMount(){
             ))}
           </div>
         ) : (
-         <div> Erreur </div>
+         <div> Loading... </div>
         )}
 
 
