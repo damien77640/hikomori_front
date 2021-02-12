@@ -83,8 +83,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   Avatar:{
-    marginRight: '20%'
+    Right: '0%',
+    display: 'flex'
   },
+  FilterListIcon:{
+    marginRight:"5%"
+  }
+  ,
   hide: {
     display: 'none',
   },
@@ -191,7 +196,6 @@ export default function PersistentDrawerLeft() {
           </IconButton>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
-              <SearchIcon />
             </div>
             <InputBase
               placeholder="Search…"
@@ -206,8 +210,8 @@ export default function PersistentDrawerLeft() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}></div>
-          <FilterListIcon />
-          <Avatar right = "20%"/>
+          <FilterListIcon className = {classes.FilterListIcon} />
+          <Avatar className= {classes.Avatar} />
         </Toolbar>
        </AppBar>
 
