@@ -21,6 +21,7 @@ const Dashboard = () => {
             })
         },
     [])
+    ///
     // Parcours et créer l'affichage de chaque manga
     const Manga = () => {
         let lstManga = []
